@@ -168,9 +168,14 @@ bool SE3Task::update()
     // update the controller
     m_SO3Controller.computeControlLaw();
     m_R3Controller.computeControlLaw();
+    if(!contact)
+    {
+         m_b.head<3>() = m_R3Controller.getControl().coeffs();
+         m_b.tail<3>() = m_SO3Controller.getControl().coeffs();
 
-    m_b.head<3>() = m_R3Controller.getControl().coeffs();
-    m_b.tail<3>() = m_SO3Controller.getControl().coeffs();
+    }
+    else
+        m_b.setZero();
 
     if (!m_kinDyn->getFrameFreeFloatingJacobian(m_frameIndex,
                                                 this->subA(m_robotVelocityVariable)))
@@ -191,8 +196,16 @@ bool SE3Task::setSetPoint(const manif::SE3d& I_H_F, const manif::SE3d::Tangent& 
     ok = ok && m_R3Controller.setDesiredState(I_H_F.translation());
     ok = ok && m_R3Controller.setFeedForward(mixedVelocity.lin());
 
+
+
     ok = ok && m_SO3Controller.setDesiredState(I_H_F.quat());
     ok = ok && m_SO3Controller.setFeedForward(mixedVelocity.ang());
+
+     contact = mixedVelocity.lin().norm() < 0.005; // 0.01 in simulation ?? not really
+
+    //log()->error("-------------------");
+    //log()->error(mixedVelocity.lin());
+    //log()->error(mixedVelocity.lin().norm());
 
     return ok;
 }

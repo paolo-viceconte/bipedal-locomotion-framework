@@ -64,6 +64,7 @@ class SE3Task : public System::LinearTask
 
     std::shared_ptr<iDynTree::KinDynComputations> m_kinDyn; /**< Pointer to a KinDynComputations
                                                                object */
+    bool contact = true;
 
 public:
 
