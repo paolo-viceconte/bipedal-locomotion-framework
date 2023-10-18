@@ -917,7 +917,7 @@ bool LeggedOdometry::Impl::changeFixedFrame(const iDynTree::FrameIndex& newIdx,
 
 
 bool LeggedOdometry::changeFixedFrame(const std::ptrdiff_t& newIdx,
-                                      const Eigen::Quaterniond& frameOrientationInWorld,
+                                      const Eigen::Vector4d& frameOrientationInWorld,
                                       const Eigen::Vector3d& framePositionInWorld)
 {
     const std::string_view printPrefix = "[LeggedOdometry::changeFixedFrame] ";
