@@ -1,4 +1,0 @@
-<map id="BipedalLocomotion::is_size_available&lt; T, void_t&lt; decltype(std::declval&lt; T &gt;().size())&gt; &gt;" name="BipedalLocomotion::is_size_available&lt; T, void_t&lt; decltype(std::declval&lt; T &gt;().size())&gt; &gt;">
-<area shape="rect" id="node1" title="is_size_available is a utility metafunction to detect if typename T contains the size()&lt;" alt="" coords="5,80,201,151"/>
-<area shape="rect" id="node2" href="/home/runner/work/bipedal-locomotion-framework/bipedal-locomotion-framework/gh-pages/doxygen/tags/cppreference-doxygen-web.tag.xml$cpp/types/integral_constant.html" title=" " alt="" coords="47,5,159,32"/>
-</map>
